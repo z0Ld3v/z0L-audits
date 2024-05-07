@@ -1,3 +1,5 @@
+![z0L Security Portfolio Logo](./images/logo.png)
+
 # z0L-security-portfolio
 
 Welcome! This repository serves as a comprehensive collection showcasing my expertise in smart contract security audits. I plan to expand this portfolio significantly over time, so stay tuned for more detailed analyses.
