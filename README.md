@@ -28,7 +28,7 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 </details>
 
 <details>
-  <summary><strong>[H-2] `PasswordStore::setPassword` has no access controls</strong></summary>
+  <summary><strong>[H-2] PasswordStore::setPassword has no access controls</strong></summary>
 
 - **Description:** `PasswordStore::setPassword` is accessible to any user, allowing them to change the stored password.
 - **Impact:** Any user can call this function and change the stored password, breaking the core functionality of the contract.
@@ -38,7 +38,7 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 </details>
 
 <details>
-  <summary><strong>[I-1] `PasswordStore::getPassword` natspec comment is incorrect</strong></summary>
+  <summary><strong>[I-1] PasswordStore::getPassword natspec comment is incorrect</strong></summary>
 
 - **Description:** The function signature differs from what is indicated in the comments, potentially misleading developers.
 - **Impact:** This issue may cause confusion for developers.
@@ -48,8 +48,8 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 ## Upcoming Reports
 
-More audits are on the way! We will continue adding valuable analyses of various smart contracts and protocols.
+More audits are on the way! I will continue adding valuable analyses of various smart contracts and protocols.
 
 ## Contributing
 
-Contributions are welcome! If you have suggestions, improvements, or requests for audits, feel free to open an issue or pull request.
+Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or pull request.
