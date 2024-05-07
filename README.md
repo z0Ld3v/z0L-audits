@@ -1,4 +1,4 @@
-![z0L Security Portfolio Logo](./images/logo.png)
+![z0L Security Portfolio Logo](./logo.png)
 
 # z0L-security-portfolio
 
