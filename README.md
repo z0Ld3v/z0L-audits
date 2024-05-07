@@ -8,7 +8,7 @@ Welcome! This repository serves as a comprehensive collection showcasing my expe
 
 ## Overview
 
-Smart contract security is crucial in blockchain development. By thoroughly reviewing code and identifying vulnerabilities, we ensure the robustness of decentralized applications and protocols. This repository aims to:
+Smart contract security is crucial in blockchain development. By thoroughly reviewing code and identifying vulnerabilities, I ensure the robustness of decentralized applications and protocols. This repository aims to:
 
 - Document existing audit reports.
 - Provide summaries and insights into findings and security best practices.
