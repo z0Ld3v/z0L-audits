@@ -12,7 +12,7 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 - Document existing audit reports.
 - Provide summaries and insights into findings and security best practices.
-- Demonstrate our comprehensive approach to smart contract security.
+- Demonstrate my comprehensive approach to smart contract security.
 
 ## Current Audit Reports
 
