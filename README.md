@@ -16,7 +16,7 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 ## Current Audit Reports
 
-### **1. PasswordStore Audit Report**
+### 1. [PasswordStore Audit Report](./2024-05-06-password-store-audit.pdf)
 
 <details>
   <summary><strong>[H-1] Storing the password on-chain makes it visible to anyone and no longer private</strong></summary>
