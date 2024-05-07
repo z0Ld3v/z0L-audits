@@ -45,6 +45,7 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 - **Recommended Mitigation:** Remove the incorrect natspec parameter line.
 
 </details>
+
 ## Upcoming Reports
 
 More audits are on the way! We will continue adding valuable analyses of various smart contracts and protocols.
