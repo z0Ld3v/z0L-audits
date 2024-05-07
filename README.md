@@ -1,4 +1,6 @@
-![z0L Security Portfolio Logo](./logo.png)
+<div align="center">
+  <img src="./logo.png" alt="Logo Alt Text" width="200" />
+</div>
 
 # z0L-security-portfolio
 
