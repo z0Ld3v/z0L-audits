@@ -56,7 +56,3 @@ More audits are on the way! We will continue adding valuable analyses of various
 ## Contributing
 
 Contributions are welcome! If you have suggestions, improvements, or requests for audits, feel free to open an issue or pull request.
-
-## License
-
-This project is licensed under the [LICENSE NAME] license. See the [LICENSE](./LICENSE) file for details.
