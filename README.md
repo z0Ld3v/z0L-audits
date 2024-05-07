@@ -12,37 +12,40 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 ## Current Audit Reports
 
-### 1. [PasswordStore Audit Report](path/to/report-1)
-
 <details>
-  <summary><strong>[H-1] Storing the password on-chain makes it visible to anyone and no longer private</strong></summary>
+  <summary><strong>1. PasswordStore Audit Report</strong></summary>
 
-- **Description:** All data stored on-chain is visible to anyone and can be read directly from the blockchain. The `PasswordStore::s_password` variable is intended to be private and accessed only through `PasswordStore::getPassword`. However, anyone can read the private password directly from the chain.
-- **Impact:** This vulnerability severely breaks the functionality of the protocol.
-- **Proof of Concept:** 
-  1. Create a locally running chain.
-  2. Deploy the contract to the chain.
-  3. Run a storage tool to extract data from the contract's storage slot.
-- **Recommended Mitigation:** Encrypt the password off-chain before storing it on-chain to keep the actual password secure.
+  <details>
+    <summary><strong>[H-1] Storing the password on-chain makes it visible to anyone and no longer private</strong></summary>
 
-</details>
+  - **Description:** All data stored on-chain is visible to anyone and can be read directly from the blockchain. The `PasswordStore::s_password` variable is intended to be private and accessed only through `PasswordStore::getPassword`. However, anyone can read the private password directly from the chain.
+  - **Impact:** This vulnerability severely breaks the functionality of the protocol.
+  - **Proof of Concept:** 
+    1. Create a locally running chain.
+    2. Deploy the contract to the chain.
+    3. Run a storage tool to extract data from the contract's storage slot.
+  - **Recommended Mitigation:** Encrypt the password off-chain before storing it on-chain to keep the actual password secure.
 
-<details>
-  <summary><strong>[H-2] `PasswordStore::setPassword` has no access controls</strong></summary>
+  </details>
 
-- **Description:** `PasswordStore::setPassword` is accessible to any user, allowing them to change the stored password.
-- **Impact:** Any user can call this function and change the stored password, breaking the core functionality of the contract.
-- **Proof of Concept:** Add the provided test code to `PasswordStore.t.sol`.
-- **Recommended Mitigation:** Implement access control to ensure only the contract owner can modify the password.
+  <details>
+    <summary><strong>[H-2] `PasswordStore::setPassword` has no access controls</strong></summary>
 
-</details>
+  - **Description:** `PasswordStore::setPassword` is accessible to any user, allowing them to change the stored password.
+  - **Impact:** Any user can call this function and change the stored password, breaking the core functionality of the contract.
+  - **Proof of Concept:** Add the provided test code to `PasswordStore.t.sol`.
+  - **Recommended Mitigation:** Implement access control to ensure only the contract owner can modify the password.
 
-<details>
-  <summary><strong>[I-1] `PasswordStore::getPassword` natspec comment is incorrect</strong></summary>
+  </details>
 
-- **Description:** The function signature differs from what is indicated in the comments, potentially misleading developers.
-- **Impact:** This issue may cause confusion for developers.
-- **Recommended Mitigation:** Remove the incorrect natspec parameter line.
+  <details>
+    <summary><strong>[I-1] `PasswordStore::getPassword` natspec comment is incorrect</strong></summary>
+
+  - **Description:** The function signature differs from what is indicated in the comments, potentially misleading developers.
+  - **Impact:** This issue may cause confusion for developers.
+  - **Recommended Mitigation:** Remove the incorrect natspec parameter line.
+
+  </details>
 
 </details>
 
