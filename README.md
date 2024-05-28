@@ -50,7 +50,7 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 </details>
 
-### 2. [PuppyRaffle Audit Report](./2024-05-27-puppyraffle-audit.pdf)
+### 2. [PuppyRaffle Audit Report](./2024-05-27-puppy-raffle-audit.pdf)
 
 <details>
   <summary><strong>[H-1] Reentrancy attack in `PuppyRaffle::refund` allows entrant to drain raffle balance</strong></summary>
@@ -130,10 +130,120 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 </details>
 
-## Upcoming Reports
+<details>
+  <summary><strong>[L-1] `PuppyRaffle:getActivePlayerIndex` returns 0 for non-existent players and for players at index 0, causing a player at index 0 to incorrectly think they have not entered the raffle</strong></summary>
 
+- **Description:** If a player is in the `PuppyRaffle::players` array at index 0, this will return 0. But according to the natspec, it will also return 0 if the player is not in the array.
+- **Impact:** A player at index 0 may incorrectly think they have not entered the raffle, and attempt to enter the raffle again, wasting gas.
+- **Proof of Concept:** 
+  1. User enters the raffle, they are the first entrant.
+  2. `PuppyRaffle::getActivePlayerIndex` returns 0.
+  3. User thinks they have not entered the raffle due to the function documentation.
+- **Recommended Mitigation:** Revert if the player is not in the array rather than returning 0. Alternatively, return an `int256` where the function returns -1 if the player is not active.
+
+</details>
+
+### Gas Optimizations
+
+<details>
+  <summary><strong>[G-1] Unchanged state variables should be declared constant or immutable</strong></summary>
+
+- **Description:** Reading from storage is much more expensive in gas than reading from a constant or immutable variable.
+- **Instances:** 
+  - `PuppyRaffle::raffleDuration` should be `immutable`
+  - `PuppyRaffle::commonImageUri` should be `constant`
+  - `PuppyRaffle::rareImageUri` should be `constant`
+  - `PuppyRaffle::legendaryImageUri` should be `constant`
+
+</details>
+
+<details>
+  <summary><strong>[G-2] Storage variables in a loop should be cached</strong></summary>
+
+- **Description:** Every time `players.length` is called, it reads from storage, which is more expensive than reading from memory.
+- **Proof of Concept:**
+  ```diff
+  +        uint256 playersLength = players.length;
+  -        for (uint256 i = 0; i < players.length - 1; i++) {
+  +        for (uint256 i = 0; i < playersLength - 1; i++) {
+  -            for (uint256 j = i + 1; j < players.length; j++) {
+  +            for (uint256 j = i + 1; j < playersLength; j++) {
+                  require(players[i] != players[j], "PuppyRaffle: Duplicate player");
+              }
+          }
+  ```
+</details>
+Informational / Non-Critical
+<details>
+  <summary><strong>[I-1] Solidity pragma should be specific, not wide</strong></summary>
+Description: Consider using a specific version of Solidity in your contracts instead of a wide version.
+Instance:
+solidity
+Copy code
+pragma solidity 0.8.18;
+</details>
+<details>
+  <summary><strong>[I-2] Using an outdated version of Solidity is not recommended</strong></summary>
+Description: Using an old version of Solidity prevents access to new Solidity security checks.
+Recommendation: Deploy with a recent version of Solidity (at least 0.8.18) with no known severe issues.
+</details>
+<details>
+  <summary><strong>[I-3] Missing checks for `address(0)` when assigning values to address state variables</strong></summary>
+Description: Check for address(0) when assigning values to address state variables.
+Instances:
+solidity
+Copy code
+feeAddress = _feeAddress; // src/PuppyRaffle.sol [Line: 69]
+feeAddress = newFeeAddress; // src/PuppyRaffle.sol [Line: 217]
+</details>
+<details>
+  <summary><strong>[I-4] `PuppyRaffle::selectWinner` does not follow CEI, which is not a good practice</strong></summary>
+Description: It's best to follow CEI (Checks, Effects, Interactions) to keep your code clean.
+Proof of Concept:
+diff
+Copy code
+-    (bool success,) = winner.call{value: prizePool}("");
+-    require(success, "PuppyRaffle: Failed to send prize pool to winner");
+    _safeMint(winner, tokenId);
++    (bool success,) = winner.call{value: prizePool}("");
++    require(success, "PuppyRaffle: Failed to send prize pool to winner");
+</details>
+<details>
+  <summary><strong>[I-5] Use of "magic" numbers is not recommended</strong></summary>
+Description: It can be confusing to see number literals in a codebase, and it's much more readable if the numbers are given a name.
+Proof of Concept:
+solidity
+Copy code
+uint256 prizePool = (totalAmountCollected * 80) / 100;
+uint256 fee = (totalAmountCollected * 20) / 100;
+Instead, use:
+solidity
+Copy code
+uint256 public constant PRIZE_POOL_PERCENTAGE = 80;
+uint256 public constant FEE_PERCENTAGE = 20;
+uint256 public constant POOL_PRECISION = 100;
+</details>
+<details>
+  <summary><strong>[I-6] State changes are missing events</strong></summary>
+Description: Emit events for state changes for better traceability.
+</details>
+<details>
+  <summary><strong>[I-7] `PuppyRaffle::_isActivePlayer` is never used and should be removed</strong></summary>
+Description: The function PuppyRaffle::_isActivePlayer is never used and should be removed.
+Proof of Concept:
+diff
+Copy code
+-    function _isActivePlayer() internal view returns (bool) {
+-        for (uint256 i = 0; i < players.length; i++) {
+-            if (players[i] == msg.sender) {
+-                return true;
+-            }
+-        }
+-        return false;
+-    }
+</details>
+Upcoming Reports
 More audits are on the way! I will continue adding valuable analyses of various smart contracts and protocols.
 
-## Contributing
-
+Contributing
 Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or pull request.
