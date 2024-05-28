@@ -250,7 +250,8 @@ Proof of Concept:
 -    }
 ```
 </details>
-Upcoming Reports
+  
+## Upcoming Reports
 More audits are on the way! I will continue adding valuable analyses of various smart contracts and protocols.
 
 ## Contributing
