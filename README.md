@@ -173,7 +173,7 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
           }
   ```
 </details>
-Informational / Non-Critical
+## Informational / Non-Critical
 <details>
   <summary><strong>[I-1] Solidity pragma should be specific, not wide</strong></summary>
 Description: Consider using a specific version of Solidity in your contracts instead of a wide version.
