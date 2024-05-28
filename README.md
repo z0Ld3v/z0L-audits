@@ -173,7 +173,9 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
           }
   ```
 </details>
-## Informational / Non-Critical
+
+### Informational / Non-Critical
+
 <details>
   <summary><strong>[I-1] Solidity pragma should be specific, not wide</strong></summary>
 Description: Consider using a specific version of Solidity in your contracts instead of a wide version.
@@ -191,37 +193,37 @@ Recommendation: Deploy with a recent version of Solidity (at least 0.8.18) with 
   <summary><strong>[I-3] Missing checks for `address(0)` when assigning values to address state variables</strong></summary>
 Description: Check for address(0) when assigning values to address state variables.
 Instances:
-solidity
-Copy code
+```solidity
 feeAddress = _feeAddress; // src/PuppyRaffle.sol [Line: 69]
 feeAddress = newFeeAddress; // src/PuppyRaffle.sol [Line: 217]
+```
 </details>
 <details>
   <summary><strong>[I-4] `PuppyRaffle::selectWinner` does not follow CEI, which is not a good practice</strong></summary>
 Description: It's best to follow CEI (Checks, Effects, Interactions) to keep your code clean.
 Proof of Concept:
-diff
-Copy code
+```diff
 -    (bool success,) = winner.call{value: prizePool}("");
 -    require(success, "PuppyRaffle: Failed to send prize pool to winner");
     _safeMint(winner, tokenId);
 +    (bool success,) = winner.call{value: prizePool}("");
 +    require(success, "PuppyRaffle: Failed to send prize pool to winner");
+```
 </details>
 <details>
   <summary><strong>[I-5] Use of "magic" numbers is not recommended</strong></summary>
 Description: It can be confusing to see number literals in a codebase, and it's much more readable if the numbers are given a name.
 Proof of Concept:
-solidity
-Copy code
+```solidity
 uint256 prizePool = (totalAmountCollected * 80) / 100;
 uint256 fee = (totalAmountCollected * 20) / 100;
+```
 Instead, use:
-solidity
-Copy code
+```solidity
 uint256 public constant PRIZE_POOL_PERCENTAGE = 80;
 uint256 public constant FEE_PERCENTAGE = 20;
 uint256 public constant POOL_PRECISION = 100;
+```
 </details>
 <details>
   <summary><strong>[I-6] State changes are missing events</strong></summary>
@@ -231,8 +233,7 @@ Description: Emit events for state changes for better traceability.
   <summary><strong>[I-7] `PuppyRaffle::_isActivePlayer` is never used and should be removed</strong></summary>
 Description: The function PuppyRaffle::_isActivePlayer is never used and should be removed.
 Proof of Concept:
-diff
-Copy code
+```diff
 -    function _isActivePlayer() internal view returns (bool) {
 -        for (uint256 i = 0; i < players.length; i++) {
 -            if (players[i] == msg.sender) {
@@ -241,6 +242,7 @@ Copy code
 -        }
 -        return false;
 -    }
+```
 </details>
 Upcoming Reports
 More audits are on the way! I will continue adding valuable analyses of various smart contracts and protocols.
