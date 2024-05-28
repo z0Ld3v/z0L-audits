@@ -50,6 +50,8 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 </details>
 
+## High
+
 ### 2. [PuppyRaffle Audit Report](./2024-05-27-puppy-raffle-audit.pdf)
 
 <details>
@@ -92,6 +94,8 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 </details>
 
+## Medium
+
 <details>
   <summary><strong>[M-1] Looking through players array to check for duplicates in `PuppyRaffle::enterRaffle` is a potential denial of service (DoS) attack</strong></summary>
 
@@ -129,6 +133,8 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 - **Recommended Mitigation:** Create a mapping of addresses -> payout so winners can pull their funds out themselves.
 
 </details>
+
+## Low
 
 <details>
   <summary><strong>[L-1] `PuppyRaffle:getActivePlayerIndex` returns 0 for non-existent players and for players at index 0, causing a player at index 0 to incorrectly think they have not entered the raffle</strong></summary>
