@@ -247,5 +247,5 @@ Proof of Concept:
 Upcoming Reports
 More audits are on the way! I will continue adding valuable analyses of various smart contracts and protocols.
 
-### Contributing
+## Contributing
 Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or pull request.
