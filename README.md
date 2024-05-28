@@ -50,9 +50,9 @@ Smart contract security is crucial in blockchain development. By thoroughly revi
 
 </details>
 
-## High
-
 ### 2. [PuppyRaffle Audit Report](./2024-05-27-puppy-raffle-audit.pdf)
+
+## High
 
 <details>
   <summary><strong>[H-1] Reentrancy attack in `PuppyRaffle::refund` allows entrant to drain raffle balance</strong></summary>
