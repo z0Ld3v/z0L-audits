@@ -1,11 +1,11 @@
 # Unauthorized Token Transfers via Unprotected `payWithERC20`
 
 **Platform:** Sherlock Audit  
-**Project:** Crestal Network Audit (April 2025)  
+**Project:** Crestal Network Audit (March 2025)  
 **Severity:** High  
 **Status:** Duplicate submission (valid but unpaid)  
-**Reported On:** [Insert exact date you reported it]  
-**GitHub Issue:** [Direct URL to your Sherlock GitHub issue]
+**Reported On:** March 14th 2025  
+**GitHub Issue:** [Click Here](https://github.com/sherlock-audit/2025-03-crestal-network-judging/issues/580)
 
 ---
 
