@@ -2,7 +2,7 @@
 
 ## Description
 
-The NudgeCampaign contract’s `handleReallocation` function incorrectly transfers the entire token balance of the caller (`msg.sender`) instead of explicitly transferring the intended token amount (`toAmount`). The problematic logic exists at lines [194](https://github.com/code-423n4/2025-03-nudgexyz/blob/88797c79ac706ed164cc1b30a8556b6073511929/src/campaign/NudgeCampaign.sol#L194), [197](https://github.com/code-423n4/2025-03-nudgexyz/blob/88797c79ac706ed164cc1b30a8556b6073511929/src/campaign/NudgeCampaign.sol#L197), and [199](https://github.com/code-423n4/2025-03-nudgexyz/blob/88797c79ac706ed164cc1b30a8556b6073511929/src/campaign/NudgeCampaign.sol#L199).
+The `NudgeCampaign` contract’s `handleReallocation` function incorrectly transfers the entire token balance of the caller (`msg.sender`) instead of explicitly transferring the intended token amount (`toAmount`). The problematic logic exists at lines [194](https://github.com/code-423n4/2025-03-nudgexyz/blob/88797c79ac706ed164cc1b30a8556b6073511929/src/campaign/NudgeCampaign.sol#L194), [197](https://github.com/code-423n4/2025-03-nudgexyz/blob/88797c79ac706ed164cc1b30a8556b6073511929/src/campaign/NudgeCampaign.sol#L197), and [199](https://github.com/code-423n4/2025-03-nudgexyz/blob/88797c79ac706ed164cc1b30a8556b6073511929/src/campaign/NudgeCampaign.sol#L199).
 
 ```solidity
 uint256 balanceOfSender = tokenReceived.balanceOf(msg.sender);
