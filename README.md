@@ -4,8 +4,7 @@
 
 # z0L-security-portfolio
 
-Welcome! This repository serves as a comprehensive collection showcasing my expertise in smart contract security audits. I plan to expand this portfolio significantly over time, so stay tuned for more detailed analyses.
-
+Welcome! This repository serves as a comprehensive collection showcasing my expertise in smart contract security audits.
 ## Overview
 
 Smart contract security is crucial in blockchain development. By thoroughly reviewing code and identifying vulnerabilities, I ensure the robustness of decentralized applications and protocols. This repository aims to:
